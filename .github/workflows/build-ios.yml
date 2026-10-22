@@ -1,0 +1,13 @@
+name: Build Sonic Forever IPA
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - run: git clone --recursive https://github.com/RSDKModding/RSDKv4-Decompilation.git engine
+      - run: bash build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SonicForever-ipa
+          path: SonicForever.ipa
